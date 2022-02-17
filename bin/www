@@ -3,6 +3,7 @@
 /**
  * Module dependencies.
  */
+import {getSettings} from '../services/settings-service.js';
 
 const app = require("../app");
 const debug = require("debug")("log-dashboard:server");
@@ -39,6 +40,8 @@ wss.on("connection",(ws)=>{
       fs.createReadStream(filePath)
         .on("data",(chunk)=>{
          let logsArr = chunk.toString().split("\n");
+         const settings = getSettings();
+         if(settings.filter)
          let logsStr = logsArr.reverse().join("\n");
          ws.send(logsStr);
     })

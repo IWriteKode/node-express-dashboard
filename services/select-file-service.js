@@ -1,13 +1,12 @@
 const fs = require("fs");
 const path = require("path");
-// const dir = process.cwd();
-let dir;
+const dir = process.cwd();
 
- (cwd) =>  {
-     exports.setcwd();
-     dir = cwd;
-    
+let dir;
+exports.setcwd = (cwd) =>{
+    dir = cwd;
 }
+
 
 function getDirectoryContents(files, currentDir, query) {
     const data = [];
